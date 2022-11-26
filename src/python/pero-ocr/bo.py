@@ -1,5 +1,7 @@
 from grongier.pex import BusinessOperation
 
+from msg import SaveFileRequest
+
 import os
 
 class SaveFile(BusinessOperation):
@@ -14,13 +16,13 @@ class SaveFile(BusinessOperation):
             os.chdir(self.path)
         
 
-    def save_file(self, request):
+    def save_file(self, request: SaveFileRequest):
         """
         Create a new file with the content of the request
         """
         filename = request.filename
         content = request.content
 
-        with open(filename, 'w', encoding='utf-8') as file:
-            file.write(content)
-
+        # Create a new file with the content of the request
+        with open(filename, 'w',encoding='utf-8') as f:
+            f.write(content)
