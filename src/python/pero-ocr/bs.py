@@ -56,13 +56,13 @@ class ServiceOCR(BusinessService):
                 page_layout = self.page_parser.process_page(image, page_layout)
 
                 # Create a SaveFileRequest with a filename and the PageLayout object
-                filename = self.path_out + file + '.xml'
+                filename = file + '.xml'
                 content = page_layout.to_pagexml_string()
                 message_output = SaveFileRequest(filename=filename, content=content)
                 self.send_request_sync(self.target,message_output)
 
                 # Create a SaveFileRequest with a filename and the PageLayout object
-                filename = self.path_out + file + '.alto.xml'
+                filename = file + '.alto.xml'
                 content = page_layout.to_altoxml_string()
                 message_output = SaveFileRequest(filename=filename, content=content)
                 self.send_request_sync(self.target,message_output)
