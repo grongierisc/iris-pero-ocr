@@ -23,7 +23,6 @@ USER ${ISC_PACKAGE_MGRUSER}
 COPY . .
 COPY iris.script /tmp/iris.script
 
-RUN pip3 install torch==1.13.0+cpu torchvision==0.10.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
 # install required packages
 RUN pip3 install -r requirements.txt
 

@@ -5,6 +5,8 @@
  zpm "install pex-embbeded-python" 
  do $System.OBJ.LoadDir("/irisdev/app/src","ck",,1)
 
+ do ##class(Ens.Director).SetAutoStart("dc.Demo.Production",1)
+
  set ^EnsPortal.Settings("SuperUser","LastProduction")	= "dc.Demo.Production"
  
  zn "%SYS"
