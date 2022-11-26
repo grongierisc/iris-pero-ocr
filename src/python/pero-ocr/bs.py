@@ -3,6 +3,7 @@ from grongier.pex import BusinessService
 import os
 import configparser
 import cv2
+import torch
 from pero_ocr.document_ocr.layout import PageLayout
 from pero_ocr.document_ocr.page_parser import PageParser
 
@@ -30,7 +31,7 @@ class ServiceOCR(BusinessService):
         self.config.read(self.config_path)
 
         # Init the OCR pipeline.
-        self.page_parser = PageParser(self.config, 
+        self.page_parser = PageParser(self.config, torch.device("cpu"),
                     config_path=os.path.dirname(self.config_path))
 
     def on_process_input(self, message_input):
@@ -59,6 +60,18 @@ class ServiceOCR(BusinessService):
                 content = page_layout.to_pagexml_string()
                 message_output = SaveFileRequest(filename=filename, content=content)
                 self.send_request_sync(self.target,message_output)
+
+                # Create a SaveFileRequest with a filename and the PageLayout object
+                filename = self.path_out + file + '.alto.xml'
+                content = page_layout.to_altoxml_string()
+                message_output = SaveFileRequest(filename=filename, content=content)
+                self.send_request_sync(self.target,message_output)
                 
                 # move file to out directory
                 os.rename(input_image_path, self.path_out + file)
+
+if __name__ == '__main__':
+    bs = ServiceOCR()
+    bs.on_init()
+    bs.on_process_input(None)
+    print("Done")
