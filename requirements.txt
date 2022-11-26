@@ -1,2 +1,5 @@
-dataclasses-json==0.5.7
-requests==2.27.1
+-f https://download.pytorch.org/whl/torch_stable.html 
+torch==1.13.0+cpu 
+-f https://download.pytorch.org/whl/torch_stable.html
+torchvision==0.13.0+cpu
+pero-ocr==0.6.0
