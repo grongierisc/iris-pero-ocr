@@ -53,7 +53,7 @@ class ServiceOCR(BusinessService):
                     page_size=(image.shape[0], image.shape[1]))
 
                 # Process the image by the OCR pipeline
-                page_layout = self.page_parser.process_page(input_image_path, page_layout)
+                page_layout = self.page_parser.process_page(image, page_layout)
 
                 # Create a SaveFileRequest with a filename and the PageLayout object
                 filename = self.path_out + file + '.xml'
