@@ -15,6 +15,7 @@ git clone <this repo>
 To install the model download the model from the realase page and extract it in the misc/pero-ocr-fix-computation-on-cpu of the project.
 
 https://github.com/grongierisc/iris-pero-ocr/releases/download/v1.0.0/OCR_350000.pt.cpu
+
 https://github.com/grongierisc/iris-pero-ocr/releases/download/v1.0.0/ParseNet_296000.pt.cpu
 
 /!\ Both models are required /!\
