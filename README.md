@@ -288,7 +288,7 @@ In this example you have the following information:
 ## Installation
 
 ```bash
-git clone <this repo>
+git clone https://github.com/grongierisc/iris-pero-ocr
 ```
 
 /!\ This demo requires the models to be installed /!\
@@ -300,6 +300,19 @@ https://github.com/grongierisc/iris-pero-ocr/releases/download/v1.0.0/OCR_350000
 https://github.com/grongierisc/iris-pero-ocr/releases/download/v1.0.0/ParseNet_296000.pt.cpu
 
 /!\ Both models are required /!\
+
+This is the expected misc folder structure : 
+
+```
+misc
+├── config_file.ini
+├── in
+├── out
+└── pero-ocr-fix-computation-on-cpu
+    ├── OCR_350000.pt.cpu
+    ├── ParseNet_296000.pt.cpu
+    └── ocr_engine.json
+```
 
 Then docker-compose up
 
